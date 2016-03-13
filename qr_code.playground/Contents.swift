@@ -2,18 +2,24 @@
 import UIKit
 import CoreImage
 
-var url = "http://www.yahoo.co.jp/"
+func outputQRcode(url: String, correctionLevel: String = "M", moduleSize: CGFloat = 10) -> CIImage {
+    // NSString から NSDataへ変換
+    let data = url.dataUsingEncoding(NSUTF8StringEncoding)!
+    
+    // QRコード生成のフィルター
+    // NSData型でデーターを用意
+    // inputCorrectionLevelは、誤り訂正レベル
+    let qr = CIFilter(name: "CIQRCodeGenerator", withInputParameters: ["inputMessage": data, "inputCorrectionLevel": correctionLevel])!
+    
+    
+    let sizeTransform = CGAffineTransformMakeScale(moduleSize, moduleSize)
+    let qrImage:CIImage = qr.outputImage!.imageByApplyingTransform(sizeTransform)
+    return qrImage
+}
 
-// NSString から NSDataへ変換
-let data = url.dataUsingEncoding(NSUTF8StringEncoding)!
-
-// QRコード生成のフィルター
-// NSData型でデーターを用意
-// inputCorrectionLevelは、誤り訂正レベル
-let qr = CIFilter(name: "CIQRCodeGenerator", withInputParameters: ["inputMessage": data, "inputCorrectionLevel": "M"])!
+outputQRcode("http://qiita.com/")
+outputQRcode("http://qiita.com/", moduleSize: 50)
 
 
-let sizeTransform = CGAffineTransformMakeScale(10, 10)
-let qrImage = qr.outputImage!.imageByApplyingTransform(sizeTransform)
 
 
