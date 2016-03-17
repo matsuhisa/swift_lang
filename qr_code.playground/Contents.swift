@@ -17,6 +17,8 @@ func outputQRcode(url: String, correctionLevel: String = "M", moduleSize: CGFloa
     return qrImage
 }
 
+// 出力
+
 outputQRcode("http://qiita.com/")
 outputQRcode("http://qiita.com/", moduleSize: 50)
 
