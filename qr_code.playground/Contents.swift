@@ -22,6 +22,9 @@ func outputQRcode(url: String, correctionLevel: String = "M", moduleSize: CGFloa
 outputQRcode("http://qiita.com/")
 outputQRcode("http://qiita.com/", moduleSize: 50)
 
+// やりたいこと
+// 色を変えたい
+
 
 
 
