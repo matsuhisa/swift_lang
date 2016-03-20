@@ -24,6 +24,7 @@ outputQRcode("http://qiita.com/", moduleSize: 50)
 
 // やりたいこと
 // 色を変えたい
+// 中央に画像を置きたい
 
 
 
